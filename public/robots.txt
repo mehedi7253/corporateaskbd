@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /books/1/
+Disallow: /sitemap.xml/

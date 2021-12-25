@@ -1,0 +1,565 @@
+/* Home page */
+.home_peragraph{
+    font-size: 15px;
+    font-weight: 500; 
+    margin: 15px;
+    font-family: 'Lato';
+    text-align: justify;
+}
+.mission_home{
+    color: red; 
+    font-size: 15px; 
+    font-weight: bold;
+    margin: 13px;
+}
+.cercile_one{
+    color: red;
+    font-size: 10px;
+    display: inline;
+}
+.border_top{
+    height: 20px;
+    background-color: red;
+    margin-left: 38px;
+}
+.ceo_token{
+    width: 100%;
+}
+.carousel-indicators li {
+    border: none;
+    background: #ccc;
+}
+
+.footer{
+    background-color: black;
+}
+.footer-text{
+    padding-top: 1px;
+    font-size: 14px; 
+    margin-left: 82px
+}
+/*big footer*/
+.big_footer{
+    background-color: #111111;
+    color: #fff;
+}
+.big_footer_heading{
+    font-family: 'Barlow', sans-serif;
+    font-weight: bold;
+}
+
+.foter_li{
+    font-size: 14px;
+    line-height: 1.4em;
+    letter-spacing: .05em;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+    list-style: none;
+    text-decoration: none;
+    color: #999;
+    font-family: 'Lato';
+}
+.btn_fotter{
+    height: 53px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 9px;
+    background-color: #DDDDDD;
+    font-size: 17px;
+    font-weight: 400;
+    margin: 10px;
+    border: 1px solid blue;
+}
+.btn_fotter:hover{
+    background-color: black;
+    transition: 2s;
+    color: white;
+}
+.foter_li:hover{
+    font-size: 14px;
+    line-height: 1.4em;
+    letter-spacing: .05em;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+.fotr_link{
+    color: white;
+    font-size: 20px;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 70px;
+    padding: 0;
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+}
+.icogmail{
+    color: white;
+}
+.icoYoutube{
+    color: white;
+}
+.icoLinkedin{
+    color: white;
+}
+.social-circle{
+    margin-left: 10px;
+}
+.icoFacebook{
+    color: white;
+}
+.w3-animate-bottom{
+    position:relative;
+    animation:animatebottom 4s;
+}
+.payment{
+    background-image: url(../../images/SSLCommerz-Pay-With-logo-All-Size-01.png);
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+@keyframes animatebottom{
+    from{
+        bottom:-250px;opacity:0
+        } to{
+            bottom:0;opacity:1
+        }
+}
+
+/*contact*/
+.contact{
+    background-color: #474D5D;
+}
+.house_address{
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 19px;
+    padding-bottom: 14px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.btn_msg{
+    font-family: 'Lato';
+}
+.text_contact{
+    font-family: 'Lato';
+}
+.input_contact{
+    border: none;
+    border-radius: 10px;
+    font-family: 'Lato';
+}
+
+/*blog*/
+.blog_image{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+.about_li{
+    list-style: none;
+}
+#blog{
+    height:652px; 
+    border: 2px solid red;
+    border-radius: 10px
+}
+
+/*conatct page*/
+.contact{
+    height: auto;
+    background-image: url("../../images/clients.jpg");
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.contact-page{
+    height: auto;
+    background-image: url("../../images/contact_background.png");
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.social-symbol2:hover{
+    color: #F62451;
+}
+.social-symbol2{
+    color: white;
+}
+.contact-form{
+    color: white;
+}
+.social-symbol3{
+    color: white;
+}
+.input-contact{
+    height: 40px;
+    border-radius: 10px;
+}
+
+/*books*/
+.add_to_cart{
+    background-color: white;
+    border: 1px solid green;
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    color: green;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.add_to_cart:hover{
+    background-color: green;
+    color: white;
+}
+.buy_now{
+    background-color: #FFAD33;
+    border: 1px solid green;
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.buy_now:hover{
+    background-color: cornflowerblue;
+    color: black;
+}
+.li_item{
+    color: rgb(102, 102, 102);
+    font-weight: 600;
+    list-style: none;
+    margin-top: 20px;
+}
+
+/*service*/
+.our_service{
+    background-image: url("../../images/services.jpg");
+    height: auto;
+    width: 100%;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+.courses{
+    background-image: url("../../images/services.jpg");
+    height: 300px;
+    width: 100%;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 2.9;
+}
+.course_div{
+    height: auto;
+    width: 100%;
+    margin-top: 100px;
+    border: 1px solid black;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0% 0%;
+}
+.servise_heading{
+    font-size: 15.5px; 
+    font-family: 'Lato';
+    margin-top: -4px; 
+    text-align:center;
+    font-weight: bold;
+}
+/*team*/
+
+
+.team4 h1, .team4 h3{
+    font-family: "Barlo", sans-serif;
+    color: black;
+    font-weight: 700;
+}
+
+.team4 .font-weight-medium {
+    font-weight: 500;
+}
+
+.team4 h5 {
+    line-height: 22px;
+    font-size: 18px;
+}
+
+.team4 .subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+    font-size: 13px;
+}
+
+.team4 ul li a {
+    color: #8d97ad;
+    padding-right: 15px;
+    -webkit-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+}
+
+.team4 ul li a:hover {
+    -webkit-transform: translate3d(0px, -5px, 0px);
+    transform: translate3d(0px, -5px, 0px);
+    color: #316ce8;
+} */
+
+
+/*recommendation*/
+.unselectable{
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.text_back:disabled{
+    background: white;
+}
+.cardImage{
+    width: 100px;
+    border-radius: 50%;
+}
+.card-recom{
+    cursor: pointer;
+}
+.card-recom:hover{
+    border: 1px solid black;
+}
+
+.recomandation{
+    background-image: url("../../images/dot.jpg");
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.recommender_name{
+    font-size: 30px; 
+    font-family: 'Barlow', sans-serif; 
+    color: #666666;
+    font-weight: bold;
+}
+.recom_desig{
+    color: red;
+    font-weight: 500; 
+    font-family: 'Lato';
+    margin-top: -8px;
+}
+.recom_peragraph{
+    font-family: 'Lato';
+    /* margin-top: -21px; */
+}
+.recom_dot{
+    margin-top: -15px;
+}
+.working_process{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    color: red;
+    text-transform: capitalize;
+}
+
+/* services */
+.sertvice_package{
+    background-image: url("../../images/dot.jpg");
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.service_content{
+    border: 2px solid red;
+    height: 543px;
+    border-radius: 10px;
+}
+.cv_check{
+    border: 2px solid red;
+    height: 450px;
+    border-radius: 10px;
+}
+/* services */
+.icon_circle{
+    height: 10px;
+    color: red;
+    width: 10px;
+    border: 1px solid red;
+}
+.service_up_section{
+   height: 300px;
+   background-color: #D72032;
+}
+.package_name{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+}
+.sub_panckage_name{
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 25px;
+}
+.package_name2{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 26px;
+}
+
+#particles-js{
+    width: 100%;
+    height: 400px;
+    background-color: #b61924;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+  .heading {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    bottom: 40%;
+    width: 100%;
+  }
+  .fetures{
+    /* background-color: #E9ECEF; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 17px;
+    text-align: justify;
+    font-family: Raleway;
+    line-height: 30px;
+  }
+
+  .btn_sub{
+      border: 1px solid red;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .slider_tow{
+        font-size: 10px;
+        color: red;
+        margin-top: -11%;
+    }
+    .service_content{
+        height: auto;
+    }
+    .cv_check{
+        height: auto;
+    }
+    ul.social-network {
+        list-style: none;
+        display: inline;
+        text-align: center;
+        padding: 0;
+    }
+    .slide{
+        padding-top: 70px;
+    }
+    .footer-text{
+        
+        font-size: 14px; 
+        text-align: center;
+    }
+    #blog{
+        height: auto; 
+        border: 2px solid red;
+        border-radius: 10px
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .slide{
+        padding-top: 70px;
+    }
+   
+    
+  }
+  /* about us */
+  .about_heading{
+    font-size: 50px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    color: red;
+  }
+  .border_span_left{
+    border: 2px solid black;
+    height: 0;
+    top: 33px;
+    left: 113px;
+  }
+.border_span_right{
+    border: 2px solid black;
+    height: 0;
+    top: 33px;
+    left: -113px;
+}
+.heading_one{
+    font-size: 23px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+}
+.heading_about_us{
+    font-size: 23px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+}
+.pera_about{
+    font-size: 18px;
+    font-family: 'Lato';
+    margin-top: -18px;
+}
+.mission_vission{
+    font-size: 18px;
+    font-family: 'Lato';
+}
+.normal_pera{
+    font-size: 18px;
+    font-family: 'Lato';
+}
+#more {display: none;}
+
+/* top to down button */
+.tp{
+    width: 25%;
+}
+#topBtn{
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+    border-radius: 50%;
+}
+#topBtn:hover{
+    background-color: white;
+    color: black;
+    border: none;
+}

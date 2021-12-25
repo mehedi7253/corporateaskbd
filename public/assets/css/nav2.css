@@ -1,0 +1,78 @@
+.navbar {
+    transition: all 0.4s;
+}
+
+.navbar .nav-link {
+    color: #555;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #555;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand {
+	background: url('../../images/logo-dark.png');
+	background-repeat: no-repeat;
+	height: auto;
+	width: 120px;
+	position: relative;
+}
+
+
+/* Change navbar styling on scroll */
+.navbar.active {
+    background: #fff;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.active .nav-link {
+    color: #555;
+    font-family: 'Barlo', sans-serif;
+}
+.dropdown-menu:hover{
+    border-top: 3px solid red;
+}
+.dropdown-item:hover {
+    background-color: red;
+    color: #fff;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+nav {
+    -webkit-transition: padding-top .3s, padding-bottom .3s;
+    -moz-transition: padding-top .3s, padding-bottom .3s;
+    transition: padding-top .3s, padding-bottom .3s;
+    border: none;
+}
+
+.navbar.active .nav-link:hover,
+.navbar.active .nav-link:focus {
+    color: red;
+    text-decoration: none;
+}
+
+.navbar.active .navbar-brand {
+    background: url('../../images/logo-dark.png');
+	background-repeat: no-repeat;
+	height: auto;
+	width: 120px;
+	position: relative;
+}
+
+
+/* Change navbar styling on small viewports */
+@media (max-width: 991.98px) {
+    .navbar {
+        background: #fff;
+    }
+
+    .navbar .navbar-brand, .navbar .nav-link {
+        color: #555;
+    }
+}
+.text-small {
+    font-size: 0.9rem !important;
+}

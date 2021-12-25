@@ -1,0 +1,8 @@
+--Google Search Console--
+Email: corporateaskweb@gmail.com
+Pass: corporate2016
+
+----CPanel----
+url: http://23.227.168.122:2082/
+user: corporat
+Pass: dIY)fBh1bJ)761
