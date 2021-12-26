@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Cookie\CookieValuePrefix;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -154,6 +155,16 @@ class TestResponse implements ArrayAccess
     }
 
     /**
+     * Assert that the response has a 422 status code.
+     *
+     * @return $this
+     */
+    public function assertUnprocessable()
+    {
+        return $this->assertStatus(422);
+    }
+
+    /**
      * Assert that the response has the given status code.
      *
      * @param  int  $status
@@ -256,11 +267,70 @@ EOF;
     public function assertRedirect($uri = null)
     {
         PHPUnit::assertTrue(
-            $this->isRedirect(), 'Response status code ['.$this->getStatusCode().'] is not a redirect status code.'
+            $this->isRedirect(),
+            $this->statusMessageWithDetails('201, 301, 302, 303, 307, 308', $this->getStatusCode()),
         );
 
         if (! is_null($uri)) {
             $this->assertLocation($uri);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Assert whether the response is redirecting to a URI that contains the given URI.
+     *
+     * @param  string  $uri
+     * @return $this
+     */
+    public function assertRedirectContains($uri)
+    {
+        PHPUnit::assertTrue(
+            $this->isRedirect(),
+            $this->statusMessageWithDetails('201, 301, 302, 303, 307, 308', $this->getStatusCode()),
+        );
+
+        PHPUnit::assertTrue(
+            Str::contains($this->headers->get('Location'), $uri), 'Redirect location ['.$this->headers->get('Location').'] does not contain ['.$uri.'].'
+        );
+
+        return $this;
+    }
+
+    /**
+     * Assert whether the response is redirecting to a given signed route.
+     *
+     * @param  string|null  $name
+     * @param  mixed  $parameters
+     * @return $this
+     */
+    public function assertRedirectToSignedRoute($name = null, $parameters = [])
+    {
+        if (! is_null($name)) {
+            $uri = route($name, $parameters);
+        }
+
+        PHPUnit::assertTrue(
+            $this->isRedirect(),
+            $this->statusMessageWithDetails('201, 301, 302, 303, 307, 308', $this->getStatusCode()),
+        );
+
+        $request = Request::create($this->headers->get('Location'));
+
+        PHPUnit::assertTrue(
+            $request->hasValidSignature(), 'The response is not a redirect to a signed route.'
+        );
+
+        if (! is_null($name)) {
+            $expectedUri = rtrim($request->fullUrlWithQuery([
+                'signature' => null,
+                'expires' => null,
+            ]), '?');
+
+            PHPUnit::assertEquals(
+                app('url')->to($uri), $expectedUri
+            );
         }
 
         return $this;
@@ -355,7 +425,7 @@ EOF;
                 PHPUnit::assertSame(
                     $filename,
                     isset(explode('=', $contentDisposition[1])[1])
-                        ? trim(explode('=', $contentDisposition[1])[1])
+                        ? trim(explode('=', $contentDisposition[1])[1], " \"'")
                         : '',
                     $message
                 );
@@ -485,7 +555,7 @@ EOF;
      * @param  string  $cookieName
      * @return \Symfony\Component\HttpFoundation\Cookie|null
      */
-    protected function getCookie($cookieName)
+    public function getCookie($cookieName)
     {
         foreach ($this->headers->getCookies() as $cookie) {
             if ($cookie->getName() === $cookieName) {
@@ -765,30 +835,57 @@ EOF;
                 : 'Response does not have JSON validation errors.';
 
         foreach ($errors as $key => $value) {
-            PHPUnit::assertArrayHasKey(
-                (is_int($key)) ? $value : $key,
-                $jsonErrors,
-                "Failed to find a validation error in the response for key: '{$value}'".PHP_EOL.PHP_EOL.$errorMessage
-            );
+            if (is_int($key)) {
+                $this->assertJsonValidationErrorFor($value, $responseKey);
 
-            if (! is_int($key)) {
-                $hasError = false;
+                continue;
+            }
+
+            $this->assertJsonValidationErrorFor($key, $responseKey);
+
+            foreach (Arr::wrap($value) as $expectedMessage) {
+                $errorMissing = true;
 
                 foreach (Arr::wrap($jsonErrors[$key]) as $jsonErrorMessage) {
-                    if (Str::contains($jsonErrorMessage, $value)) {
-                        $hasError = true;
+                    if (Str::contains($jsonErrorMessage, $expectedMessage)) {
+                        $errorMissing = false;
 
                         break;
                     }
                 }
+            }
 
-                if (! $hasError) {
-                    PHPUnit::fail(
-                        "Failed to find a validation error in the response for key and message: '$key' => '$value'".PHP_EOL.PHP_EOL.$errorMessage
-                    );
-                }
+            if ($errorMissing) {
+                PHPUnit::fail(
+                    "Failed to find a validation error in the response for key and message: '$key' => '$expectedMessage'".PHP_EOL.PHP_EOL.$errorMessage
+                );
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Assert the response has any JSON validation errors for the given key.
+     *
+     * @param  string  $key
+     * @param  string  $responseKey
+     * @return $this
+     */
+    public function assertJsonValidationErrorFor($key, $responseKey = 'errors')
+    {
+        $jsonErrors = Arr::get($this->json(), $responseKey) ?? [];
+
+        $errorMessage = $jsonErrors
+            ? 'Response has the following JSON validation errors:'.
+            PHP_EOL.PHP_EOL.json_encode($jsonErrors, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE).PHP_EOL
+            : 'Response does not have JSON validation errors.';
+
+        PHPUnit::assertArrayHasKey(
+            $key,
+            $jsonErrors,
+            "Failed to find a validation error in the response for key: '{$key}'".PHP_EOL.PHP_EOL.$errorMessage
+        );
 
         return $this;
     }
@@ -982,6 +1079,105 @@ EOF;
     protected function responseHasView()
     {
         return isset($this->original) && $this->original instanceof View;
+    }
+
+    /**
+     * Assert that the given keys do not have validation errors.
+     *
+     * @param  string|array|null  $keys
+     * @param  string  $errorBag
+     * @param  string  $responseKey
+     * @return $this
+     */
+    public function assertValid($keys = null, $errorBag = 'default', $responseKey = 'errors')
+    {
+        if ($this->baseResponse->headers->get('Content-Type') === 'application/json') {
+            return $this->assertJsonMissingValidationErrors($keys, $responseKey);
+        }
+
+        if ($this->session()->get('errors')) {
+            $errors = $this->session()->get('errors')->getBag($errorBag)->getMessages();
+        } else {
+            $errors = [];
+        }
+
+        if (empty($errors)) {
+            PHPUnit::assertTrue(true);
+
+            return $this;
+        }
+
+        if (is_null($keys) && count($errors) > 0) {
+            PHPUnit::fail(
+                'Response has unexpected validation errors: '.PHP_EOL.PHP_EOL.
+                json_encode($errors, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+            );
+        }
+
+        foreach (Arr::wrap($keys) as $key) {
+            PHPUnit::assertFalse(
+                isset($errors[$key]),
+                "Found unexpected validation error for key: '{$key}'"
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Assert that the response has the given validation errors.
+     *
+     * @param  string|array|null  $errors
+     * @param  string  $errorBag
+     * @param  string  $responseKey
+     * @return $this
+     */
+    public function assertInvalid($errors = null,
+                                  $errorBag = 'default',
+                                  $responseKey = 'errors')
+    {
+        if ($this->baseResponse->headers->get('Content-Type') === 'application/json') {
+            return $this->assertJsonValidationErrors($errors, $responseKey);
+        }
+
+        $this->assertSessionHas('errors');
+
+        $keys = (array) $errors;
+
+        $sessionErrors = $this->session()->get('errors')->getBag($errorBag)->getMessages();
+
+        $errorMessage = $sessionErrors
+                ? 'Response has the following validation errors in the session:'.
+                        PHP_EOL.PHP_EOL.json_encode($sessionErrors, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE).PHP_EOL
+                : 'Response does not have validation errors in the session.';
+
+        foreach (Arr::wrap($errors) as $key => $value) {
+            PHPUnit::assertArrayHasKey(
+                (is_int($key)) ? $value : $key,
+                $sessionErrors,
+                "Failed to find a validation error in session for key: '{$value}'".PHP_EOL.PHP_EOL.$errorMessage
+            );
+
+            if (! is_int($key)) {
+                $hasError = false;
+
+                foreach (Arr::wrap($sessionErrors[$key]) as $sessionErrorMessage) {
+                    if (Str::contains($sessionErrorMessage, $value)) {
+                        $hasError = true;
+
+                        break;
+                    }
+                }
+
+                if (! $hasError) {
+                    PHPUnit::fail(
+                        "Failed to find a validation error for key and message: '$key' => '$value'".PHP_EOL.PHP_EOL.$errorMessage
+                    );
+                }
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -1190,6 +1386,43 @@ EOF;
     protected function session()
     {
         return app('session.store');
+    }
+
+    /**
+     * Dump the content from the response and end the script.
+     *
+     * @return never
+     */
+    public function dd()
+    {
+        $this->dump();
+
+        exit(1);
+    }
+
+    /**
+     * Dump the headers from the response and end the script.
+     *
+     * @return never
+     */
+    public function ddHeaders()
+    {
+        $this->dumpHeaders();
+
+        exit(1);
+    }
+
+    /**
+     * Dump the session from the response and end the script.
+     *
+     * @param  string|array  $keys
+     * @return never
+     */
+    public function ddSession($keys = [])
+    {
+        $this->dumpSession($keys);
+
+        exit(1);
     }
 
     /**

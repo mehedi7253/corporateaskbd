@@ -55,7 +55,7 @@ trait ConfirmsPasswords
     protected function rules()
     {
         return [
-            'password' => 'required|string|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
+            'password' => 'required|password',
         ];
     }
 
