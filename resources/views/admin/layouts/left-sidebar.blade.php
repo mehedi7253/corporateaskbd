@@ -89,6 +89,23 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons"></i>
+                    <span>Manage Services Category</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{ route('service-category.create') }}"> Add Category</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('service-category.index') }}">Manage Category</a>
+                    </li>
+                </ul>
+            </li>
+
+
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>
@@ -202,6 +219,36 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">widgets</i>
+                    <span>Manage Services Category</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{ route('service-category.create') }}"> Add Category</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('service-category.index') }}">Manage Category</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">widgets</i>
+                    <span>Manage Package</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{ route('packages.create') }}"> Add Package</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('packages.index') }}">Manage Package</a>
+                    </li>
+                </ul>
+            </li>
+
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>

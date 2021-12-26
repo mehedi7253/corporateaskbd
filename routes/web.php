@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\CouponCodeController;
 use App\Http\Controllers\Admin\CvcheckOrderController;
 use App\Http\Controllers\Pages\applyCouponController;
 use App\Http\Controllers\Admin\FakeorderController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Pages\BlogpageController;
 use App\Http\Controllers\Pages\BookpageController;
 use App\Http\Controllers\Pages\CartController;
@@ -78,6 +80,10 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('admin-books', AdminBooksController::class);
     Route::resource('bookorders', BookOrderController::class);
     Route::resource('cvcheck-order', CvcheckOrderController::class);
+
+    // affilate
+    Route::resource('service-category', ServiceCategoryController::class);
+    Route::resource('packages', PackageController::class);
 });
 
 
