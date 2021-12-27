@@ -14,4 +14,7 @@ class packege extends Model
     protected $fillable = [
         'slug', 'name', 'price', 'default_discount', 'status', 'thumbnail'
     ];
+
+    
+    
 }

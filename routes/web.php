@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\FakeorderController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductPackageController;
 use App\Http\Controllers\Pages\BlogpageController;
 use App\Http\Controllers\Pages\BookpageController;
 use App\Http\Controllers\Pages\CartController;
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('product-category', ProductCategoryController::class);
     Route::resource('packages', PackageController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('product-packages', ProductPackageController::class);
 });
 
 

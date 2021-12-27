@@ -28,6 +28,7 @@
                                     <th>URL</th>
                                     <th>Thumbnail</th> 
                                     <th>Action</th>
+                                    <th>Product</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,6 +49,10 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>
                                             </form>    
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{ route('product-packages.show', $package->id) }}"><i class="fa fa-plus"></i></a> |
+                                            <a class="btn btn-info" href="{{ route('packages.show', $package->id) }}"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

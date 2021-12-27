@@ -14,4 +14,13 @@ class productPackage extends Model
     protected $fillable = [
         'package_id', 'product_id', 'is_required'
     ];
+
+    public function products(){
+        return $this->hasMany(product::class, 'id');
+    }
+
+    public function packages()
+    {
+        return $this->hasMany(packege::class, 'id');
+    }
 }

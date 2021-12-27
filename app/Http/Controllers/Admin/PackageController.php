@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\packege;
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -86,7 +87,10 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = "Add Product";
+        $package   = packege::find($id);
+        $products = product::all();
+        return view('admin.product-package.index',compact('page_name','package', 'products'));
     }
 
     /**

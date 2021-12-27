@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <div class="body">
-                    <div class="table-responsive">
+                  
                        <form action="{{ route('product-category.store') }}" method="POST">
                         @csrf
                             <div class="form-group">
@@ -36,7 +36,7 @@
                             </div>
 
                        </form>
-                    </div>
+                    
                 </div>
             </div>
         </div>
