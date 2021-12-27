@@ -71,13 +71,13 @@
 
                                     <input type="radio" name="status" value="1" id="female" class="with-gap">
                                     <label for="female" class="m-l-20">Un-Publish</label>
-                                @else
-                                    <input type="radio" name="status"  id="male" value="0" class="with-gap">
-                                    <label for="male">Publish</label>
+                                    @else
+                                        <input type="radio" name="status"  id="male" value="0" class="with-gap">
+                                        <label for="male">Publish</label>
 
-                                    <input type="radio" name="status" checked value="1" id="female" class="with-gap">
-                                    <label for="female" class="m-l-20">Un-Publish</label>
-                                @endif
+                                        <input type="radio" name="status" checked value="1" id="female" class="with-gap">
+                                        <label for="female" class="m-l-20">Un-Publish</label>
+                                    @endif
                                 </div>
                                 @error('status')
                                 <span class="invalid-feedback" role="alert">

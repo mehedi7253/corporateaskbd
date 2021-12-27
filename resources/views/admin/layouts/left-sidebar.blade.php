@@ -248,6 +248,20 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons"></i>
+                    <span>Manage Product</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{ route('products.create') }}"> Add Prodcut</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('products.index') }}">Manage Product</a>
+                    </li>
+                </ul>
+            </li>
 
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
