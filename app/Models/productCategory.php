@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class serviceCategory extends Model
+class productCategory extends Model
 {
     use HasFactory;
-    protected $table = 'service_categories';
+    protected $table = 'product_categories';
     public $timestamps = true;
    
     protected $fillable = [

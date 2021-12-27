@@ -13,12 +13,12 @@
                 <div class="header">
                     <h2>{{$page_name}}</h2>
                     <ul class="header-dropdown m-r--5">
-                        <a href="{{ route('service-category.index') }}" class="btn btn-primary">Manage Service Category</a>
+                        <a href="{{ route('product-category.index') }}" class="btn btn-primary">Manage Service Category</a>
                     </ul>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                       <form action="{{ route('service-category.store') }}" method="POST">
+                       <form action="{{ route('product-category.store') }}" method="POST">
                         @csrf
                             <div class="form-group">
                                 <div class="form-line">

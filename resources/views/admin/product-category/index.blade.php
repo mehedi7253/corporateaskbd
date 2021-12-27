@@ -13,7 +13,7 @@
                 <div class="header">
                     <h2>{{$page_name}}</h2>
                     <ul class="header-dropdown m-r--5">
-                        <a href="{{ route('service-category.create') }}" class="btn btn-primary">Add New Service Category</a>
+                        <a href="{{ route('product-category.create') }}" class="btn btn-primary">Add New Service Category</a>
                     </ul>
                 </div>
                 <div class="body">
@@ -32,8 +32,8 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $categorie->name }}</td>
                                         <td>
-                                            <form action="{{route('service-category.destroy', $categorie->id)}}" method="post">
-                                                <a class="btn btn-info" href="{{ route('service-category.edit', $categorie->id) }}"><i class="fa fa-edit"></i></a> |
+                                            <form action="{{route('product-category.destroy', $categorie->id)}}" method="post">
+                                                <a class="btn btn-info" href="{{ route('product-category.edit', $categorie->id) }}"><i class="fa fa-edit"></i></a> |
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>

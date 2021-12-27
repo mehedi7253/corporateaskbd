@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\serviceCategory;
+use App\Models\productCategory;
 use Illuminate\Http\Request;
 
-class ServiceCategoryController extends Controller
+class ProductCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class ServiceCategoryController extends Controller
     public function index()
     {
         $page_name = "Manage Category";
-        $categories = serviceCategory::all();
+        $categories = productCategory::all();
 
-        return view('admin.service-category.index', compact('page_name','categories'));
+        return view('admin.product-category.index', compact('page_name','categories'));
     }
 
     /**
@@ -27,10 +27,9 @@ class ServiceCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
         $page_name = "Add New Category";
-        return view('admin.service-category.create', compact('page_name'));
-        
+        return view('admin.product-category.create', compact('page_name'));
     }
 
     /**
@@ -47,7 +46,7 @@ class ServiceCategoryController extends Controller
             'name.required' => 'Please Enter Category Name'
         ]);
 
-        $category = new serviceCategory();
+        $category = new productCategory();
         $category->name = $request->name;
 
         $category->save();
@@ -74,8 +73,8 @@ class ServiceCategoryController extends Controller
     public function edit($id)
     {
         $page_name = "Update Category Details";
-        $category = serviceCategory::find($id);
-        return view('admin.service-category.edit', compact('page_name', 'category'));
+        $category = productCategory::find($id);
+        return view('admin.product-category.edit', compact('page_name', 'category'));
     }
 
     /**
@@ -93,11 +92,11 @@ class ServiceCategoryController extends Controller
             'name.required' => 'Please Enter Category Name'
         ]);
 
-        $category = serviceCategory::find($id);
+        $category = productCategory::find($id);
         $category->name = $request->name;
 
         $category->save();
-        return redirect()->route('service-category.index')->with('message','New Category Update Successful');
+        return redirect()->route('product-category.index')->with('message','New Category Update Successful');
     }
 
     /**
@@ -108,7 +107,7 @@ class ServiceCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $categorie = serviceCategory::find($id);
+        $categorie = productCategory::find($id);
         $categorie->delete();
         return back()->with('message','Category Delete Successful');
     }

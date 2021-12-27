@@ -18,7 +18,7 @@
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                       <form action="{{ route('service-category.update', $category->id) }}" method="POST">
+                       <form action="{{ route('product-category.update', $category->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                             <div class="form-group">

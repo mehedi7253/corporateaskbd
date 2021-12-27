@@ -13,7 +13,7 @@
                 <div class="header">
                     <h2>{{$page_name}}</h2>
                     <ul class="header-dropdown m-r--5">
-                        <a href="{{ route('service-category.create') }}" class="btn btn-primary">Add New Service Category</a>
+                        <a href="{{ route('packages.index') }}" class="btn btn-primary">Manage Pacakges</a>
                     </ul>
                 </div>
                 <div class="body">

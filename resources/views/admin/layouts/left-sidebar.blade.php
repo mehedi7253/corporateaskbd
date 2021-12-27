@@ -97,10 +97,10 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="{{ route('service-category.create') }}"> Add Category</a>
+                        <a href="{{ route('product-category.create') }}"> Add Category</a>
                     </li>
                     <li>
-                        <a href="{{ route('service-category.index') }}">Manage Category</a>
+                        <a href="{{ route('product-category.index') }}">Manage Category</a>
                     </li>
                 </ul>
             </li>
@@ -227,10 +227,10 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="{{ route('service-category.create') }}"> Add Category</a>
+                        <a href="{{ route('product-category.create') }}"> Add Category</a>
                     </li>
                     <li>
-                        <a href="{{ route('service-category.index') }}">Manage Category</a>
+                        <a href="{{ route('product-category.index') }}">Manage Category</a>
                     </li>
                 </ul>
             </li>

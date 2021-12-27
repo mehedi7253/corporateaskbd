@@ -98,7 +98,7 @@ class PackageController extends Controller
     public function edit($id)
     {
         $page_name = "Update Package Data";
-        $pacakge   = packege::find($id);
+        $package   = packege::find($id);
         return view('admin.package.edit',compact('page_name','package'));
     }
 
@@ -112,24 +112,20 @@ class PackageController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'slug'               => 'required',
             'name'               => 'required',
             'price'              => 'required',
             'default_discount'   => 'required',
             'status'             => 'required',
-            'thumbnail.required' => 'required | mimes:jpg,png,jpeg|max:7048'
+            'thumbnail'          => 'mimes:jpg,png,jpeg|max:7048'
         ],[
-            'slug.required'             => 'Please Enter Package Slug',
             'name.required'             => 'Please Enter Package Name',
             'price.required'            => 'Please Enter Price',
             'default_discount.required' => 'Please Enter Discount Price',
-            'thumbnail.required'        => 'Please Enter Image',
             'thumbnail.mimes'           => 'Please Select Jpg,png,jpeg Type',
             'thumbnail.max'             => 'Please Select Image Less Then 8 Mb',
         ]);
 
         $packages = packege::find($id);
-        $packages->slug             = $request->slug;
         $packages->name             = $request->name;
         $packages->price            = $request->price;
         $packages->default_discount = $request->default_discount;
