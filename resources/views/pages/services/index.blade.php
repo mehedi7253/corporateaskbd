@@ -31,15 +31,15 @@
     <section class="mb-5 recomandation">
         <div class="container">
             <div class="row">
-                @foreach($services as $service)
+                @foreach($packages as $package)
                     <div class="col-md-4 col-sm-12 float-left">
                         <div class="card mt-4" style="border: 2px solid red; border-radius: 10px">
                             <div class="card-header text-center">
-                                <span class="text-center package_name">{{ $service->service_name }}</span>
+                                <span class="text-center package_name">{{ $package->name }}</span>
                             </div>
-                            <a href="{{ route('pages.show', ['name'=>$service->url]) }}"><img src="{{ asset('services/images/'.$service->service_image) }}" style="height: auto; width: 100%"  alt="image" title="{{ $service->service_name }}"></a>
+                            <a href="{{ route('pages.show', ['name'=>$package->slug]) }}"><img src="{{ asset('package/images/'.$package->thumbnail) }}" style="height: auto; width: 100%"  alt="image" title="{{ $package->name }}"></a>
                             <div class="card-body text-center">
-                                <a href="{{ route('pages.show', ['name'=>$service->url]) }}" class="col-md-6 btn text-center" style="background-color: #B61924; border-radius: 10px; color: white">Buy Now</a>
+                                <a href="{{ route('pages.show', ['name'=>$package->slug]) }}" class="col-md-6 btn text-center" style="background-color: #B61924; border-radius: 10px; color: white">Buy Now</a>
                             </div>
                         </div>
                     </div>

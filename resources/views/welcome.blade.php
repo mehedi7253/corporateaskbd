@@ -53,12 +53,12 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @php
-                                $nav = DB::table('services')->limit('4')->get();
+                                $nav = DB::table('packeges')->limit('4')->get();
                             @endphp
                             @foreach ($nav as $nav_bar)
-                                 <a class="dropdown-item text-capitalize" href="{{ route('pages.show', ['name'=>$nav_bar->url]) }}">{{ $nav_bar->service_name }}</a>
+                                 <a class="dropdown-item text-capitalize" href="{{ route('pages.show', ['name'=>$nav_bar->slug]) }}">{{ $nav_bar->name }}</a>
                             @endforeach
-                          <a class="dropdown-item text-capitalize" href="{{ route('services-packages.index') }}">More</a>
+                          <a class="dropdown-item text-capitalize" href="{{ route('service.package.index') }}">More</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

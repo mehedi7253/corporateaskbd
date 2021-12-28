@@ -38,6 +38,7 @@ use App\Http\Controllers\Pages\CvcheckControoler;
 use App\Http\Controllers\Pages\CvcheckserviceController;
 use App\Http\Controllers\Pages\FileUploadController;
 use App\Http\Controllers\Pages\LikeunlikeController;
+use App\Http\Controllers\Pages\PagePackageController;
 use App\Http\Controllers\Pages\testServiceController;
 use App\Http\Controllers\User\UserbookorderController;
 
@@ -110,7 +111,10 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 });
 
 
+
 //pages
+Route::get('/{name}', [PagePackageController::class, 'show'])->name('pages.show');
+Route::get('service/package', [PagePackageController::class, 'index'])->name('service.package.index');
 Route::resource('services-packages', PageServiceController::class);
 Route::get('books', [BookpageController::class, 'index'])->name('books.index');
 Route::get('books/{books_url}', [BookpageController::class, 'book_details'])->name('books.book_details');
@@ -146,7 +150,7 @@ Route::get('/about-us', function () {
 
 Route::get('cv-check', [CvcheckserviceController::class, 'index'])->name('cvcheck.index');
 Route::get('/cv-check/{cvcheck}', [CvcheckserviceController::class, 'cvheckShow'])->name('cvcheck.cvheckShow');
-Route::get('/{name}', [testServiceController::class, 'show'])->name('pages.show');
+// Route::get('/{name}', [testServiceController::class, 'show'])->name('pages.show');
 
 
 Route::get('/success', function () {

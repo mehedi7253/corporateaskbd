@@ -21,7 +21,7 @@ class product extends Model
 
     public function productPackages()
     {
-        return $this->belongsTo(productPackage::class, 'product_id');
+        return $this->hasMany(productPackage::class, 'product_id');
     }
 
     public function productMeta()

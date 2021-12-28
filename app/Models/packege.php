@@ -15,6 +15,9 @@ class packege extends Model
         'slug', 'name', 'price', 'default_discount', 'status', 'thumbnail'
     ];
 
-    
+    public function products()
+    {
+        return $this->belongsTo(product::class, 'id');
+    }
     
 }

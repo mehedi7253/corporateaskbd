@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\CvCart;
 use App\Models\CvService;
+use App\Models\packege;
 use App\Models\service;
+use Facade\Ignition\Support\Packagist\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,8 +20,8 @@ class PageServiceController extends Controller
      */
     public function index()
     {
-        $services = service::all()->where('status','=','0')->where('type','=','normal service');
-        return view('pages.services.index', compact('services'));
+       $packages = packege::all();
+       return view('pages.services.index', compact('packages'));
     }
 
     /**
