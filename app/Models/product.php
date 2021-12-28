@@ -23,4 +23,9 @@ class product extends Model
     {
         return $this->belongsTo(productPackage::class, 'product_id');
     }
+
+    public function productMeta()
+    {
+        return $this->hasMany(productMeta::class, 'product_id');
+    }
 }

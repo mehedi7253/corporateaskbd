@@ -24,9 +24,11 @@ use App\Http\Controllers\Admin\CouponCodeController;
 use App\Http\Controllers\Admin\CvcheckOrderController;
 use App\Http\Controllers\Pages\applyCouponController;
 use App\Http\Controllers\Admin\FakeorderController;
+use App\Http\Controllers\Admin\MetatageditController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductmetController;
 use App\Http\Controllers\Admin\ProductPackageController;
 use App\Http\Controllers\Pages\BlogpageController;
 use App\Http\Controllers\Pages\BookpageController;
@@ -88,6 +90,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('packages', PackageController::class);
     Route::resource('products', ProductController::class);
     Route::resource('product-packages', ProductPackageController::class);
+    Route::resource('product-meta', ProductmetController::class);
+    Route::resource('metatag-edit', MetatageditController::class);
 });
 
 

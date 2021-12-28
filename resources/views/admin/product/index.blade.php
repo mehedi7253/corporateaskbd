@@ -26,6 +26,7 @@
                                     <th>Name</th>  
                                     <th>Price</th>
                                     <th>Discount Price</th>
+                                    <th>Meta Data</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,8 +39,13 @@
                                         <td>{{ number_format($prodcut->price,2) }}</td>
                                         <td>{{ number_format($prodcut->default_discount,2) }}</td>
                                         <td>
+                                            <a class="btn btn-info" href="{{ route('product-meta.show', $prodcut->id) }}"><i class="fa fa-plus"></i></a> |
+                                            <a class="btn btn-primary" href="{{ route('metatag-edit.show', $prodcut->id) }}"><i class="fa fa-eye"></i></a>
+                                        </td>
+                                        <td>
                                             <form action="{{route('products.destroy', $prodcut->id)}}" method="post">
                                                 <a class="btn btn-info" href="{{ route('products.edit', $prodcut->id) }}"><i class="fa fa-edit"></i></a> |
+                                                <a class="btn btn-info" href="{{ route('products.show', $prodcut->id) }}"><i class="fa fa-eye"></i></a> |
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>

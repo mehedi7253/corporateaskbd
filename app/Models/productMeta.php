@@ -14,4 +14,8 @@ class productMeta extends Model
     protected $fillable = [
         'product_id', 'type', 'key', 'value'
     ];
+
+    public function products(){
+        return $this->hasMany(product::class, 'id');
+    }
 }

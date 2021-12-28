@@ -70,7 +70,6 @@
                                                 <td>{{ $product_packages->ProductName }}</td>
                                                 <td>
                                                     <form action="{{route('product-packages.destroy', $product_packages->producPackaID)}}" method="post">
-                                                        <a class="btn btn-info" href="{{ route('packages.edit', $product_packages->producPackaID) }}"><i class="fa fa-edit"></i></a> |
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>

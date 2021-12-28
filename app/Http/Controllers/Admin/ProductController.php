@@ -77,7 +77,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = "product Details";
+        $product = product::find($id);
+
+        // return $product->productMeta;
+        
+
+        return view('admin.product.show', compact('page_name','product'));
     }
 
     /**
