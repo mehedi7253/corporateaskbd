@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\category;
-use App\Models\CvService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CoursepageController extends Controller
 {
-    public function index()
+     public function index()
     {
         $categorys = category::paginate(10);
         return view('pages.courses.index', compact('categorys'));

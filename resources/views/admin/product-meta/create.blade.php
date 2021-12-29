@@ -23,7 +23,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input name="product_id" hidden value="{{ $product->id }}">
+                                        <input name="sku_id" hidden value="{{ $product->id }}">
                                         <label for="service_name">Select Type :<sup class="text-danger">*</sup></label>
                                         <select class="form-control" name="type">
                                             <option value="default">Default</option>
@@ -44,6 +44,22 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label for="sku_type">Select Sku Type :<sup class="text-danger">*</sup></label>
+                                        <select class="form-control" name="sku_type">
+                                            <option value="package">Package</option>
+                                            <option value="product">Product</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                               
                             </div>
                         </div>
                         <div class="row clearfix">

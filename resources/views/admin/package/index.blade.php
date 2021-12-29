@@ -52,7 +52,7 @@
                                         </td>
                                         <td>
                                             <a class="btn btn-info" href="{{ route('product-packages.show', $package->id) }}"><i class="fa fa-plus"></i></a> |
-                                            <a class="btn btn-info" href="{{ route('packages.show', $package->id) }}"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-info" href="{{ route('product-packages.show', $package->id) }}"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

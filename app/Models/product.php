@@ -26,6 +26,6 @@ class product extends Model
 
     public function productMeta()
     {
-        return $this->hasMany(productMeta::class, 'product_id');
+        return $this->hasMany(productMeta::class, 'sku_id');
     }
 }

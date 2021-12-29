@@ -12,7 +12,7 @@ class productMeta extends Model
     public $timestamps = true;
    
     protected $fillable = [
-        'product_id', 'type', 'key', 'value'
+        'sku_type', 'sku_id', 'type', 'key', 'value'
     ];
 
     public function products(){

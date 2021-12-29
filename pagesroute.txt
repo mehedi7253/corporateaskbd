@@ -1,0 +1,89 @@
+Route::get('/{name}', [PagePackageController::class, 'show'])->name('pages.show');
+Route::get('/service/packages', [PagePackageController::class, 'index'])->name('service.package.index');
+// Route::resource('services-packages', PageServiceController::class);
+
+Route::get('books', [BookpageController::class, 'index'])->name('books.index');
+Route::get('books/{books_url}', [BookpageController::class, 'book_details'])->name('books.book_details');
+Route::post('books/addtocart', [BookpageController::class, 'AddtoCart'])->name('books.addtocart');
+Route::resource('carts', CartController::class);
+
+Route::get('blogs/bn',[BlogpageController::class, 'index'])->name('blogsbn.index');
+Route::get('/blogs/bn/{name}', [BlogpageController::class, 'show'])->name('pages.blogs.show');
+
+Route::get('/courses-and-tutorials', [CoursepageController::class, 'index'])->name('courses-and-tutorials.index');
+Route::get('/course/{tutorials}', [CoursepageController::class, 'show'])->name('courses-and-tutorials.show');
+Route::get('/FAQs', function () {
+    return view('pages.services.faq');
+});
+
+Route::get('/blogs', [BlogpageController::class, 'englishblog'])->name('blog.englishblog');
+Route::get('/blogs/{ename}', [BlogpageController::class, 'englishshow'])->name('blog.enblogshow');
+
+// Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+
+Route::get('/Niaz-Ahmed', function () {
+    return view('pages.ceo.index');
+});
+Route::get('/payment', function () {
+    return view('payment.index');
+});
+Route::get('/policy', function () {
+    return view('pages.policy');
+});
+Route::get('/about-us', function () {
+    return view('pages.about_us');
+});
+Route::get('/contact', function () {
+    return view('pages.contact.index');
+});
+Route::get('cv-check', [CvcheckserviceController::class, 'index'])->name('cvcheck.index');
+Route::get('/cv-check/{cvcheck}', [CvcheckserviceController::class, 'cvheckShow'])->name('cvcheck.cvheckShow');
+// Route::get('/{name}', [testServiceController::class, 'show'])->name('pages.show');
+
+
+Route::get('/success', function () {
+    return view('pages.cv_check.success');
+});
+
+Route::resource('cvchecks', CvcheckControoler::class);
+Route::resource('file-upload', FileUploadController::class);
+
+Route::get("sitemap.xml" , function () {
+    return \Illuminate\Support\Facades\Redirect::to('sitemap.xml');
+});
+
+Route::post('/pay_cv', [SslCommerzPaymentController::class, 'cv_pay'])->name('pay_cv.cv_pay');
+
+
+Route::resource('contact',ContactCOntroller::class);
+Route::resource('our-team',TeampagesController::class);
+Route::get('apply', [applyCouponController::class,'apply'])->name('apply');
+
+//like unlike
+Route::get('/visitor', [LikeunlikeController::class, 'details'])->name('visitr.destails');
+Route::put('/like/{id}', [LikeunlikeController::class, 'new_like'])->name('like.new_like');
+Route::delete('/unlike/{id}', [LikeunlikeController::class, 'update_like'])->name('unlike.update_like');
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay.index');
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+Route::post('/pay_book', [SslCommerzPaymentController::class, 'book_pay'])->name('pay.book');
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
+Route::get('/cache-clear', function() {
+   $t = Artisan::call('optimize:clear');
+    return $t;
+});
+

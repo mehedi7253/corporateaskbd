@@ -45,7 +45,8 @@ class ProductmetController extends Controller
         ]);
 
         $meta = new productMeta();
-        $meta->product_id    = $request->product_id;
+        $meta->sku_id        = $request->sku_id;
+        $meta->sku_type      = $request->sku_type;
         $meta->type          = $request->type;
         $meta->key           = $request->key;
         $meta->value         = $request->value;

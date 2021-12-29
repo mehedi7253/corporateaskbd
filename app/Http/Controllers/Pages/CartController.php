@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\book_orders;
@@ -50,7 +50,6 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-       
         $this->validate($request,[
             'book_id' => 'required',
             'quantity' => 'required'
@@ -82,6 +81,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
+        
         $page_name = "Add Shiping Address and Make Payment";
 
         $orderid = book_orders::find($id);

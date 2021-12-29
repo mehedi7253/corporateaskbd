@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\PublicMessage;
 use Illuminate\Http\Request;
 
-class ContactCOntroller extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.

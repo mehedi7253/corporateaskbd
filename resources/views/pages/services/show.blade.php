@@ -8,6 +8,39 @@
         gtag('js', new Date());
         gtag('config', 'UA-207188585-1');
     </script>
+    @foreach ($meta as $metas)
+        @if($metas->sku_type == 'package')
+            @if($metas->key == 'description' && $metas->type == 'seo')
+                <meta name="description" content="@php echo  $metas->value @endphp ">
+            @endif
+            <meta property="og:type" content="Corporate Ask"/>
+            <meta property="og:url" content="https://corporateaskbd.com"/>
+            <meta property="og:image" content="https://corporateaskbd.com/images/fb_icon.png">
+            <meta property="og:image:height" content="300px"/>
+            <meta property="og:image:width" content="600px"/>
+            <meta property="og:site_name" content="Corporate Ask"/>
+            <link rel="canonical" href="https://corporateaskbd.com/"/>  
+            @if($metas->key == 'title' && $metas->type == 'seo')
+                <title>@php echo $metas->value @endphp  </title>
+            @endif
+
+            @elseif($metas->sku_type == 'product')
+                @if($metas->key == 'description' && $metas->type == 'seo')
+                    <meta name="description" content="@php echo  $metas->value @endphp ">
+                @endif
+                <meta property="og:type" content="Corporate Ask"/>
+                <meta property="og:url" content="https://corporateaskbd.com"/>
+                <meta property="og:image" content="https://corporateaskbd.com/images/fb_icon.png">
+                <meta property="og:image:height" content="300px"/>
+                <meta property="og:image:width" content="600px"/>
+                <meta property="og:site_name" content="Corporate Ask"/>
+                <link rel="canonical" href="https://corporateaskbd.com/"/>  
+                @if($metas->key == 'title' && $metas->type == 'seo')
+                    <title>@php echo $metas->value @endphp  </title>
+                @endif
+        @endif
+    @endforeach
+   
   
 @endsection
 @section('content')
@@ -21,8 +54,6 @@
         
     </div>
 </div>
-
-
 <section class="recomandation">
     <div class="container">
         <div class="row mt-5 mb-5">
@@ -32,7 +63,11 @@
                         <h1 class="text-center text-white servise_heading"> FAQs  & Working Process </h1>
                     </div>
                     <div class="card-body unselectable" style="font-family: 'Hind Siliguri'">
-                        
+                        @foreach ($meta as $metas)
+                            @if($metas->type == 'default' && $metas->key == 'faq')
+                                @php echo $metas->value @endphp
+                            @endif
+                        @endforeach
                     </div>
                     <div class="card-footer">
                         <a class="btn text-white btn-block" href="{{ url('/FAQs') }}" style="border-radius: 12px; background-color: red">Read More</a>
@@ -85,6 +120,9 @@
                                 <div class="form-group">
                                     <a href="{{ route('pages.show', ['name'=>'Professional-CV-Resume']) }}" class="text-decoration-none text-capitalize"><i class="fas fa-link text-danger"></i> Buy Standard Package (Only CV/ Resume)</a>
                                 </div>
+                                <div class="form-group">
+                                    <input type="checkbox" required><a target="_blank" href="{{ url('/policy') }}"> Accept Terms & Condition</a>                                            
+                                </div>
                             </div>
                     
                         
@@ -101,7 +139,11 @@
                         <h1 class="text-center text-white servise_heading"> Features & Benefits </h1>
                     </div>
                     <div class="card-body unselectable dummy fetures" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; font-family: 'Lato'; font-size: 15px">
-                        
+                        @foreach ($meta as $metas)
+                            @if($metas->type == 'default' && $metas->key == 'features')
+                                @php echo $metas->value @endphp
+                            @endif
+                        @endforeach
                   </div>
                 </div>
             </div>

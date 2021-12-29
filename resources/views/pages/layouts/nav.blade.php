@@ -11,21 +11,21 @@
                         <a class="nav-link text-uppercase" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('services-packages.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('pages.service.package') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Services
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @php
-                                $nav = DB::table('services')->limit('4')->get();
+                                $nav = DB::table('packeges')->limit('4')->get();
                             @endphp
                             @foreach ($nav as $nav_bar)
-                                 <a class="dropdown-item text-capitalize" href="{{ route('pages.show', ['name'=>$nav_bar->url]) }}">{{ $nav_bar->service_name }}</a>
+                                 <a class="dropdown-item text-capitalize" href="{{ route('pages.show', ['name'=>$nav_bar->slug]) }}">{{ $nav_bar->name }}</a>
                             @endforeach
-                          <a class="dropdown-item text-capitalize" href="{{ route('services-packages.index') }}">More</a>
+                          <a class="dropdown-item text-capitalize" href="{{ route('pages.service.package') }}">More</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('services-packages.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('service.package.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Cv Checking
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -37,15 +37,15 @@
                             @endforeach
                           <a class="dropdown-item text-capitalize" href="{{ route('cvcheck.index') }}">More</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                         <a class="nav-link text-uppercase" href="{{ route('courses-and-tutorials.index') }}">Courses</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="{{ route('books.index') }}">Books</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('services-packages.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('service.package.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Blogs
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -66,7 +66,7 @@
                 
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="{{ route('contact.index') }}">Contact Us</a>
-                    </li>
+                    </li> --}}
                 
                     <li class="nav-item dropdown">
                         @if (Route::has('login'))

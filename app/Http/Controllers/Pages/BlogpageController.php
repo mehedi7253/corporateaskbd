@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\LikeUnlike;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BlogpageController extends Controller
 {

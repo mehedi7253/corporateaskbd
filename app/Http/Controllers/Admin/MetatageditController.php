@@ -53,7 +53,7 @@ class MetatageditController extends Controller
         $product   = product::find($id);
 
         $metatags = DB::table('product_metas')
-                ->where('product_id', '=', $id)
+                ->where('sku_id', '=', $id)
                 ->get();
         return view('admin.product-meta.index', compact('page_name','product', 'metatags'));
     }

@@ -5,8 +5,6 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminOfferController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Pages\PageServiceController;
-use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\User\ServiceorderController;
 use App\Http\Controllers\Admin\OrderServiceController;
 use App\Http\Controllers\Admin\ServiceProviderController;
@@ -15,14 +13,11 @@ use App\Http\Controllers\Admin\AdminBooksController;
 use App\Http\Controllers\Admin\BookOrderController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
-use App\Http\Controllers\Pages\ContactCOntroller;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\ManualorderController;
-use App\Http\Controllers\Pages\TeampagesController;
 use App\Http\Controllers\Admin\CouponCodeController;
 use App\Http\Controllers\Admin\CvcheckOrderController;
-use App\Http\Controllers\Pages\applyCouponController;
 use App\Http\Controllers\Admin\FakeorderController;
 use App\Http\Controllers\Admin\MetatageditController;
 use App\Http\Controllers\Admin\PackageController;
@@ -30,16 +25,13 @@ use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductmetController;
 use App\Http\Controllers\Admin\ProductPackageController;
-use App\Http\Controllers\Pages\BlogpageController;
-use App\Http\Controllers\Pages\BookpageController;
+use App\Http\Controllers\pages\BookpageController;
+use App\Http\Controllers\pages\PagePackageController;
 use App\Http\Controllers\Pages\CartController;
+use App\Http\Controllers\pages\BlogpageController;
+use App\Http\Controllers\pages\ContactController;
 use App\Http\Controllers\Pages\CoursepageController;
-use App\Http\Controllers\Pages\CvcheckControoler;
-use App\Http\Controllers\Pages\CvcheckserviceController;
-use App\Http\Controllers\Pages\FileUploadController;
-use App\Http\Controllers\Pages\LikeunlikeController;
-use App\Http\Controllers\Pages\PagePackageController;
-use App\Http\Controllers\Pages\testServiceController;
+use App\Http\Controllers\Pages\TeampagesController;
 use App\Http\Controllers\User\UserbookorderController;
 
 /*
@@ -111,29 +103,26 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 });
 
 
-
 //pages
-Route::get('/{name}', [PagePackageController::class, 'show'])->name('pages.show');
-Route::get('service/package', [PagePackageController::class, 'index'])->name('service.package.index');
-Route::resource('services-packages', PageServiceController::class);
-Route::get('books', [BookpageController::class, 'index'])->name('books.index');
-Route::get('books/{books_url}', [BookpageController::class, 'book_details'])->name('books.book_details');
-Route::post('books/addtocart', [BookpageController::class, 'AddtoCart'])->name('books.addtocart');
-Route::resource('carts', CartController::class);
 
+Route::get('/service-package', [PagePackageController::class, 'index'])->name('pages.service.package');
+Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pages.show');
+Route::get('/books', [BookpageController::class, 'index'])->name('books.index');
+Route::get('/books/{books_url}', [BookpageController::class, 'book_details'])->name('books.book_details');
+Route::post('/books/addtocart', [BookpageController::class, 'AddtoCart'])->name('books.addtocart');
+Route::resource('carts', CartController::class);
 Route::get('blogs/bn',[BlogpageController::class, 'index'])->name('blogsbn.index');
 Route::get('/blogs/bn/{name}', [BlogpageController::class, 'show'])->name('pages.blogs.show');
-
+Route::get('/blogs', [BlogpageController::class, 'englishblog'])->name('blog.englishblog');
+Route::get('/blogs/{ename}', [BlogpageController::class, 'englishshow'])->name('blog.enblogshow');
 Route::get('/courses-and-tutorials', [CoursepageController::class, 'index'])->name('courses-and-tutorials.index');
 Route::get('/course/{tutorials}', [CoursepageController::class, 'show'])->name('courses-and-tutorials.show');
+Route::resource('our-team',TeampagesController::class);
+Route::resource('contact',ContactController::class);
+
 Route::get('/FAQs', function () {
     return view('pages.services.faq');
 });
-
-Route::get('/blogs', [BlogpageController::class, 'englishblog'])->name('blog.englishblog');
-Route::get('/blogs/{ename}', [BlogpageController::class, 'englishshow'])->name('blog.enblogshow');
-
-// Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 
 Route::get('/Niaz-Ahmed', function () {
     return view('pages.ceo.index');
@@ -148,54 +137,7 @@ Route::get('/about-us', function () {
     return view('pages.about_us');
 });
 
-Route::get('cv-check', [CvcheckserviceController::class, 'index'])->name('cvcheck.index');
-Route::get('/cv-check/{cvcheck}', [CvcheckserviceController::class, 'cvheckShow'])->name('cvcheck.cvheckShow');
-// Route::get('/{name}', [testServiceController::class, 'show'])->name('pages.show');
-
-
-Route::get('/success', function () {
-    return view('pages.cv_check.success');
-});
-
-Route::resource('cvchecks', CvcheckControoler::class);
-Route::resource('file-upload', FileUploadController::class);
-
-Route::get("sitemap.xml" , function () {
-    return \Illuminate\Support\Facades\Redirect::to('sitemap.xml');
-});
-
-Route::post('/pay_cv', [SslCommerzPaymentController::class, 'cv_pay'])->name('pay_cv.cv_pay');
-
-
-Route::resource('contact',ContactCOntroller::class);
-Route::resource('our-team',TeampagesController::class);
-Route::get('apply', [applyCouponController::class,'apply'])->name('apply');
-
-//like unlike
-Route::get('/visitor', [LikeunlikeController::class, 'details'])->name('visitr.destails');
-Route::put('/like/{id}', [LikeunlikeController::class, 'new_like'])->name('like.new_like');
-Route::delete('/unlike/{id}', [LikeunlikeController::class, 'update_like'])->name('unlike.update_like');
-// SSLCOMMERZ Start
-Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
-
-Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay.index');
-Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
-Route::post('/pay_book', [SslCommerzPaymentController::class, 'book_pay'])->name('pay.book');
-
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
-Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
-
-Route::get('/cache-clear', function() {
-   $t = Artisan::call('optimize:clear');
-    return $t;
-});
-

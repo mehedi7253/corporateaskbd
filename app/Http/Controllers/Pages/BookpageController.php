@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\BookCart;
@@ -63,7 +63,4 @@ class BookpageController extends Controller
         }
     }
 
-
-  
-        
 }

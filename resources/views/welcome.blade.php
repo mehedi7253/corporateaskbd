@@ -48,7 +48,7 @@
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('services-packages.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('pages.service.package') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Services
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -58,10 +58,10 @@
                             @foreach ($nav as $nav_bar)
                                  <a class="dropdown-item text-capitalize" href="{{ route('pages.show', ['name'=>$nav_bar->slug]) }}">{{ $nav_bar->name }}</a>
                             @endforeach
-                          <a class="dropdown-item text-capitalize" href="{{ route('service.package.index') }}">More</a>
+                          <a class="dropdown-item text-capitalize" href="{{ route('pages.service.package') }}">More</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('services-packages.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Cv Checking
                         </a>
@@ -74,20 +74,22 @@
                             @endforeach
                           <a class="dropdown-item text-capitalize" href="{{ route('cvcheck.index') }}">More</a>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="{{ route('books.index') }}">Books</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" href="{{ route('services-packages.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Blogs
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-capitalize" href="{{ route('blogsbn.index') }}">Bangla</a>
                             <a class="dropdown-item text-capitalize" href="{{ route('blog.englishblog') }}">English</a>
                         </div>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="{{ route('courses-and-tutorials.index') }}">Courses</a>
                     </li>
-                   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase" href="{{ url('/about-us') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           About US
@@ -98,10 +100,10 @@
                             <a class="dropdown-item text-capitalize" href="{{ route('our-team.index') }}">Our Team</a>
                         </div>
                     </li>
-                
+                                     
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="{{ route('contact.index') }}">Contact Us</a>
-                    </li>
+                    </li> 
                 
                     <li class="nav-item dropdown">
                         @if (Route::has('login'))
@@ -439,9 +441,9 @@
                     <div class="mt-3 mb-4">
                         <h5 style="color: #fff;" class="ml-5 p-1 big_footer_heading">Help</h5>
                         <ul class="ul_fotter">
-                            <li class="nav-link"><a class="foter_li" href="{{ route('blogsbn.index') }}">Read Blog</a></li>
-                            <li class="nav-link"><a class="foter_li" href="{{ url('/') }}">How system Works</a></li>
-                            <li class="nav-link"><a class="foter_li" href="{{ url('/policy') }}">Terms & Condition</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">Read Blog</a></li>
+                            <li class="nav-link"><a class="foter_li" href="fb">How system Works</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">Terms & Condition</a></li>
                         </ul>
                     </div>
                 </div>
@@ -449,15 +451,15 @@
                     <div class="mt-3">
                         <h5 style="color: #fff;" class="ml-5 p-1  big_footer_heading">About Us</h5>
                         <ul class="ul_fotter">
-                            <li class="nav-link"><a class="foter_li" href="{{ url('/about-us') }}">About US</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">About US</a></li>
                             <li class="nav-link"><a class="foter_li" href="https://niazahmed.net/" target="_blank">About Niaz</a></li>
-                            <li class="nav-link"><a class="foter_li" href="{{route('contact.index')}}">Contact</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">Contact</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12 float-left">
                     <div class="mt-4">
-                        <a href="{{ route('services-packages.index') }}"><button class="btn_fotter text-uppercase"><i class="fas fa-shopping-basket"></i> Order Now</button></a> <br/>
+                        <a href=""><button class="btn_fotter text-uppercase"><i class="fas fa-shopping-basket"></i> Order Now</button></a> <br/>
                         <button class="btn_fotter text-uppercase"><i class="fas fa-money-bill-alt"></i> Affiliate Area</button><br/>
                     </div>
                 </div>

@@ -17,9 +17,9 @@
                     <div class="mt-3 mb-4">
                         <h5 style="color: #fff;" class="ml-5 p-1 big_footer_heading">Help</h5>
                         <ul class="ul_fotter">
-                            <li class="nav-link"><a class="foter_li" href="{{ route('blogsbn.index') }}">Read Blog</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">Read Blog</a></li>
                             <li class="nav-link"><a class="foter_li" href="{{ url('/') }}">How system Works</a></li>
-                            <li class="nav-link"><a class="foter_li" href="{{ url('/policy') }}">Terms & Condition</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">Terms & Condition</a></li>
                         </ul>
                     </div>
                 </div>
@@ -27,15 +27,15 @@
                     <div class="mt-3">
                         <h5 style="color: #fff;" class="ml-5 p-1  big_footer_heading">About Us</h5>
                         <ul class="ul_fotter">
-                            <li class="nav-link"><a class="foter_li" href="{{ url('/about-us') }}">About US</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">About US</a></li>
                             <li class="nav-link"><a class="foter_li" href="https://niazahmed.net/" target="_blank">About Niaz</a></li>
-                            <li class="nav-link"><a class="foter_li" href="{{route('contact.index')}}">Contact</a></li>
+                            <li class="nav-link"><a class="foter_li" href="">Contact</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12 float-left">
                     <div class="mt-4">
-                        <a href="{{ route('services-packages.index') }}"><button class="btn_fotter text-uppercase"><i class="fas fa-shopping-basket"></i> Order Now</button></a> <br/>
+                        <a href=""><button class="btn_fotter text-uppercase"><i class="fas fa-shopping-basket"></i> Order Now</button></a> <br/>
                         <button class="btn_fotter text-uppercase"><i class="fas fa-money-bill-alt"></i> Affiliate Area</button><br/>
                     </div>
                 </div>
