@@ -110,7 +110,7 @@
                                     @endphp
                                     @foreach ($products as $product)
                                     
-                                        <input value="{{ $packages->name }}" name="purchase_type" hidden>
+                                        <input value="{{ $packages->id }}" name="purchase_type" hidden>
                                         @if($product->is_required == '1')
                                             <i class="fas fa-circle" style="font-size: 13px; color: red"></i> {{ $product->name }}<br/>
                                         @elseif ($product->is_required == '0')

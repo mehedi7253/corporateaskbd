@@ -15,7 +15,7 @@ class ordersController extends Controller
             'product_id' => 'required'
         ]);
 
-        $transaction_id = rand(100,10000000000);
+        $transaction_id = rand(100,100000000);
         foreach ($request->product_id as $i => $product) 
         {
             $order = new orders_item();
@@ -28,20 +28,20 @@ class ordersController extends Controller
             $order->discount_code  = 'test50';
 
             $order->save();
+        }
 
-            $final_order = new ordersfinal();
+        $final_order = new ordersfinal();
             $final_order->transaction_id = $transaction_id;
             $final_order->user_id        = 1;
             $final_order->experience     = $request->experience;
             $final_order->purchase_type  = $request->purchase_type;
             $final_order->meta           = 'meta data';
-            $final_order->price          = '10000';
-            $final_order->status         = 'Pending';
+            $final_order->price          = 'NULL';
+            $final_order->status         = 'PENDING';
 
             $final_order->save();
-        }
 
-        return $order;
-
+        $last_id = $order->id;
+        return redirect()->route('final-orders.show', [$last_id])->with('message','Product Added Successful');
     }
 }
