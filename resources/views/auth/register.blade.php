@@ -181,7 +181,7 @@
                 </div>
                 <div class="col-md-3 col-sm-12 float-left">
                     <div class="mt-3">
-                        <a href="{{ route('services-packages.index') }}"><button class="btn_fotter text-uppercase"><i class="fas fa-shopping-basket"></i> Order Now</button></a> <br/>
+                        <a href="{{ route('pages.service.package') }}"><button class="btn_fotter text-uppercase"><i class="fas fa-shopping-basket"></i> Order Now</button></a> <br/>
                         <button class="btn_fotter text-uppercase"><i class="fas fa-money-bill-alt"></i> Affiliate Area</button><br/>
                     </div>
                 </div>

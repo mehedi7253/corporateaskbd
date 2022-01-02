@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class logs extends Model
 {
     use HasFactory;
     public $timestamps = true;
-    protected $table = 'offers';
+    protected $table = 'logs';
     protected $fillable = [
-        'service_id','discount','status','image','url'
+        'transaction_id','type','value'
     ];
-
-    public function services(){
-       return $this->belongsTo(service::class, 'id');
-    }
 }

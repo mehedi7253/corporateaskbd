@@ -77,11 +77,12 @@
 
             @foreach ($package as $packages)
                 <div class="col-md-5 col-sm-12 float-left mt-3">
-                    <div class="card service_content" style="border: 2px solid red; border-radius: 10px">
-                        <div class="card-header" style="background-color: red; height: 38px;">
-                            <h1 class="text-white servise_heading">Start From: <del> {{ number_format($packages->price,2) }} </del> {{ number_format($packages->default_discount,2) }} BDT (70% Discount).</h1>                   
-                        </div>
-
+                    <form action="{{ route('orders-cart.store') }}" method="POST">
+                        @csrf
+                        <div class="card service_content" style="border: 2px solid red; border-radius: 10px">
+                            <div class="card-header" style="background-color: red; height: 38px;">
+                                <h1 class="text-white servise_heading">Start From: <del> {{ number_format($packages->price,2) }} </del> {{ number_format($packages->default_discount,2) }} BDT (70% Discount).</h1>                   
+                            </div>
                             <div class="card-body" style=""> 
                                 
                                 <div class="form-group">
@@ -108,10 +109,13 @@
                                             ->get();
                                     @endphp
                                     @foreach ($products as $product)
+                                    
+                                        <input value="{{ $packages->name }}" name="purchase_type" hidden>
                                         @if($product->is_required == '1')
                                             <i class="fas fa-circle" style="font-size: 13px; color: red"></i> {{ $product->name }}<br/>
                                         @elseif ($product->is_required == '0')
-                                            <input type="checkbox" name="cv_service_id[]"  value="{{ $product->id }}"> {{ $product->name }} <span class="text-danger"> {{ number_format($product->default_discount,2) }} T.K</span> <br/>
+                                            <input value="{{ $product->category_id }}" name="category_id[]" hidden>
+                                            <input type="checkbox" name="product_id[]"  value="{{ $product->id }}"> {{ $product->name }} <span class="text-danger"> {{ number_format($product->default_discount,2) }} T.K</span> <br/>
                                         @endif
                                     @endforeach
                                     <span class="text-danger">{{ $errors->first('cv_service_id') }}</span>
@@ -124,12 +128,11 @@
                                     <input type="checkbox" required><a target="_blank" href="{{ url('/policy') }}"> Accept Terms & Condition</a>                                            
                                 </div>
                             </div>
-                    
-                        
-                        <div class="card-footer" style="text-align: center">
-                            <input type="submit" value="Submit" name="btn_cv" class="btn btn-success col-5 mx-auto" onclick="checkCheckbox()" style="border-radius: 12px">
+                            <div class="card-footer" style="text-align: center">
+                                <input type="submit" value="Submit" name="btn_cv" class="btn btn-success col-5 mx-auto" onclick="checkCheckbox()" style="border-radius: 12px">
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             @endforeach
 

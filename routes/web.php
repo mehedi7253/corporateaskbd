@@ -31,6 +31,7 @@ use App\Http\Controllers\Pages\CartController;
 use App\Http\Controllers\pages\BlogpageController;
 use App\Http\Controllers\pages\ContactController;
 use App\Http\Controllers\Pages\CoursepageController;
+use App\Http\Controllers\pages\ordersController;
 use App\Http\Controllers\Pages\TeampagesController;
 use App\Http\Controllers\User\UserbookorderController;
 
@@ -119,6 +120,9 @@ Route::get('/courses-and-tutorials', [CoursepageController::class, 'index'])->na
 Route::get('/course/{tutorials}', [CoursepageController::class, 'show'])->name('courses-and-tutorials.show');
 Route::resource('our-team',TeampagesController::class);
 Route::resource('contact',ContactController::class);
+
+//orders 
+Route::post('/orders-cart',[ordersController::class, 'store'])->name('orders-cart.store');
 
 Route::get('/FAQs', function () {
     return view('pages.services.faq');
