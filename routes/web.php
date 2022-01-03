@@ -106,7 +106,6 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 
 
 //pages
-
 Route::get('/service-package', [PagePackageController::class, 'index'])->name('pages.service.package');
 Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pages.show');
 Route::get('/books', [BookpageController::class, 'index'])->name('books.index');
@@ -146,5 +145,5 @@ Route::get('/about-us', function () {
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
-    return "Cache is cleared";
+    return back();
 });
