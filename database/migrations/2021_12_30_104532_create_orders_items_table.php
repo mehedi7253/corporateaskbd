@@ -20,8 +20,8 @@ class CreateOrdersItemsTable extends Migration
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->string('transaction_id');
             $table->string('purchase_type');
-            $table->string('affiliate_code');
-            $table->string('discount_code');
+            $table->string('affiliate_code')->nullable();
+            $table->string('discount_code')->nullable();
             $table->timestamps();
         });
     }

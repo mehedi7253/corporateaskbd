@@ -20,7 +20,7 @@ class CreateOrdersfinalsTable extends Migration
             $table->string('experience');
             $table->string('purchase_type');
             $table->string('meta');
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->string('status');
             $table->timestamps();
         });
